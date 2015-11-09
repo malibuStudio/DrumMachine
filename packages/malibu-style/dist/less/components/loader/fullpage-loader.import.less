@@ -1,0 +1,47 @@
+@dimmer-loader-size: 5rem;
+
+
+.dimmer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: RGBA(0, 0, 0, 0.8);
+  background: @brand-primary;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 9999;
+}
+
+.loading {
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    margin-top: -(@dimmer-loader-size/2);
+    margin-left: -(@dimmer-loader-size/2);
+    display: block;
+
+    content: '';
+
+    width: @dimmer-loader-size;
+    height: @dimmer-loader-size;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff transparent transparent;
+    border-radius: 100%;
+
+    box-shadow: 0 0 0 1px transparent;
+
+    opacity: 1;
+
+    animation: spinner-rotate .6s linear infinite;
+  }
+}

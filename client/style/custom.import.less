@@ -1,0 +1,383 @@
+@nav-height               : 4rem;
+@nav-icon-color           : RGBA(117, 117, 127, 1);
+
+.navbar {
+  display: flex;
+
+  align-items: center;
+
+  width: 100vw;
+  height: @nav-height;
+
+  padding: 0 2rem;
+
+  // border-bottom: 1px solid @ios-border;
+}
+
+.navbar a {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: @nav-icon-color;
+
+  text-align: center;
+
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 50%;
+
+  .inner {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 2rem;
+    height: 2rem;
+
+    // When use ion-navicon-round
+    i:after,
+    i:before {
+      display: block;
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+  }
+}
+
+.navbar span.current-page-name {
+  display: block;
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+
+#content {
+  display: flex;
+
+  height: ~"calc(100% - @{nav-height})";
+
+  &.gray {
+    background: @ios-gray;
+  }
+}
+
+.sidemenu {
+  flex: 0 0 2rem;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  padding-top: 1.5rem;
+  margin-left: 2rem;
+  margin-right: 1.5rem;
+
+  font-size: 1.4rem;
+  color: @nav-icon-color;
+
+  a {
+    position: relative;
+
+    display: block;
+
+    color: @nav-icon-color;
+    margin: 0.75rem 0;
+
+    text-align: center;
+
+    &.active {
+      color: @brand-primary;
+    }
+    .tooltip {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      .translate(0, -50%);
+      opacity: 0;
+      padding: 0.2rem;
+      font-size: 0.7rem;
+      background: @nav-icon-color;
+      color: white;
+      border-radius: 3px;
+      transition: all 200ms ease;
+    }
+    &:hover {
+      .tooltip {
+        top: 50%;
+        left: 100%;
+        .translate(0, -50%);
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+.sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 250px;
+
+  background: white;
+
+  z-index: 50;
+
+  border-right: 2px solid black;
+
+  .translate(-100%, 0);
+  .sidebar-top {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: @nav-height;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .sidebar-top span {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
+}
+
+.content-body {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  overflow-y: scroll;
+  padding: 8pt 2rem;
+}
+
+.cover-block {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    .translate(0, -50%);
+    z-index: 1;
+  }
+  h1.title {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    .translate(0, -50%);
+    color: white;
+    z-index: 2;
+    margin: 0;
+    text-align: center;
+    font-weight: lighter;
+    .subtitle {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #DDD;
+    }
+  }
+}
+
+.text-block {
+  h1, h2, h3, h4, h5 ,h6 {
+    // font-weight: lighter;
+    color: RGBA(51, 51, 51, 1);
+    margin-bottom: 0;
+    margin-top: 2rem;
+  }
+  p {
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.58;
+    color: RGBA(51, 51, 51, 1)
+  }
+  .img-full-width {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 1rem 0;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+#List {
+  flex: 0 0 200px;
+}
+#Drummer {
+  flex: 1;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // .translate(-50%, -50%);
+  h1 {
+    text-align: center;
+    small {
+      display: block;
+      font-weight: normal;
+      font-style: italic;
+      font-size: 0.5em;
+    }
+  }
+}
+
+.pads {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pads .row {
+  display: flex;
+  // flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.pad {
+  display: block;
+  position: relative;
+  border: 2px solid #333;
+  width: 20vmin;
+  height: 20vmin;
+  margin: 0.5rem;
+  background: repeating-linear-gradient(-55deg, #FFF, #FFF 3px, #333 3px, #333 6px);
+  border-radius: 6px;
+  .pad-front {
+    background: #FFF;
+    border: 2px solid #333;
+
+    width: 20vmin;
+    height: 20vmin;
+
+    content: "";
+    display: block;
+    left: 2px;
+    position: absolute;
+    top: -6px;
+    overflow: hidden;
+    border-radius: 6px;
+    .activate {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: @brand-primary;
+      content: "";
+      border-radius: 50%;
+      transform: scale(0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: 400ms all;
+    }
+    &.highlight {
+      background: @ios-blue;
+    }
+  }
+  .pad-front.hit {
+    .activate {
+      transform: scale(2);
+      opacity: 1;
+    }
+  }
+}
+
+
+ul.knobs {
+  // height: 40px;
+  // left: 50%;
+  // margin-left: -100px;
+  // margin-top: -20px;
+  // position: absolute;
+  // top: 50%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-top: 1.5rem;
+  // width: 200px;
+}
+
+.knob {
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: inline-block;
+  height: 30px;
+  margin: 0px 5px;
+  position: relative;
+  width: 30px;
+}
+
+.knob.front {
+  background: #FFF;
+  border: 2px solid #333;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 30px;
+  left: -3px;
+  position: absolute;
+  top: -5px;
+  width: 30px;
+
+  &:after {
+    background: #333;
+    content: "";
+    display: block;
+    height: 10px;
+    left: 14px;
+    position: absolute;
+    top: -1px;
+    transform: rotate(0deg);
+    transform-origin: 0 15px;
+    width: 2px;
+  }
+}
+
+.knob.back {
+  background: repeating-linear-gradient(-55deg, #FFF, #FFF 3px, #333 3px, #333 6px);
+}
+
+ul.sample-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.sample-item {
+  position: relative;
+  padding: 1rem 0;
+  border-bottom: 1px solid black;
+  a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .type {
+    color: #333;
+    font-size: 0.8rem;
+  }
+}
