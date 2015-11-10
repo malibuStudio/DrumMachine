@@ -1,4 +1,21 @@
 @mcom=
+  padMap: [
+    [
+      { wav: '/kick1.wav', key: 81 }
+      { wav: '/snare1.wav', key: 87 }
+      { wav: '/hh1.wav', key: 69 }
+    ]
+    [
+      { wav: '/clap1.wav', key: 65 }
+      { wav: '/crash1.wav', key: 83 }
+      { wav: '/hh2.wav', key: 68 }
+    ]
+    [
+      { wav: '/hh1.wav', key: 90 }
+      { wav: '/hh1.wav', key: 88 }
+      { wav: '/hh1.wav', key: 67 }
+    ]
+  ]
   didLoaded: ->
     # oncreate
     Draggable.create '.knob.front',
@@ -169,36 +186,7 @@
                 "Scribbly Pad",
                 m "small", "by Malibu Studio"
               m ".pads",
-                m ".row",
-                  m.component mcom.padComponent,
-                    wav:'/kick1.wav'
-                    key: '81'
-                  m.component mcom.padComponent,
-                    wav:'/snare1.wav'
-                    key: '87'
-                  m.component mcom.padComponent,
-                    wav:'/hh1.wav'
-                    key: '69'
-                m ".row",
-                  m.component mcom.padComponent,
-                    wav:'/clap1.wav'
-                    key: '65'
-                  m.component mcom.padComponent,
-                    wav:'/crash1.wav'
-                    key: '83'
-                  m.component mcom.padComponent,
-                    wav:'/hh2.wav'
-                    key: '68'
-                m ".row",
-                  m.component mcom.padComponent,
-                    wav:'/hh1.wav'
-                    key: '90'
-                  m.component mcom.padComponent,
-                    wav:'/hh1.wav'
-                    key: '88'
-                  m.component mcom.padComponent,
-                    wav:'/hh1.wav'
-                    key: '67'
+                m ".row", (m.component mcom.padComponent, obj for obj in objs) for objs in mcom.padMap
               m "ul.knobs",
                 m "li.knob.back", m "span.knob.front"
                 m "li.knob.back", m "span.knob.front"
