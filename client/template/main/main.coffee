@@ -1,4 +1,5 @@
 @mcom=
+  # collections
   padMap: [
     [
       { wav: '/kick1.wav', key: 81 }
@@ -22,8 +23,14 @@
     { wav: '/snare2.wav', name: 'Massive Snare', type: 'Snare' }
     { wav: '/effect1.wav', name: 'Lazer', type: 'Effect' }
   ]
+  knobs: [
+    { name: 'cut' }
+    { name: 'Q' }
+    { name: 'vol' }
+    { name: 'pan' }
+  ]
+  # it is fired when the initial HTML document has been completely loaded and parsed.
   didLoaded: ->
-    # oncreate
     Draggable.create '.knob.front',
       type: 'rotation'
       throwProps: true
@@ -94,6 +101,7 @@
         $(event.target).attr('data-drum', $(event.relatedTarget).attr('data-drum'))
       ondropdeactivate: (event)->
         console.log 'drag deactivate'
+
   padDown: (e, padKey)->
     pad = $(e.target)
     pad = padKey if padKey?
@@ -145,8 +153,14 @@
       m "li.draggable.sample-item[data-drum='#{data.wav}']",
         m "a[href='#']", "#{data.name}"
         m ".type", "#{data.type}"
+  knobComponent:
+    controller: (data)->
+      data
+    view: (data)->
+      m "li.knob.back",
+        m "span.knob.front", data.name
 
-  # event handlers
+# event handlers
   onSideBarHandler:
     onclick: (e)->
       e.preventDefault()
@@ -195,7 +209,4 @@
               m ".pads",
                 m ".row", (m.component mcom.padComponent, obj for obj in objs) for objs in mcom.padMap
               m "ul.knobs",
-                m "li.knob.back", m "span.knob.front"
-                m "li.knob.back", m "span.knob.front"
-                m "li.knob.back", m "span.knob.front"
-                m "li.knob.back", m "span.knob.front"
+                m.component mcom.knobComponent, obj for obj in mcom.knobs
