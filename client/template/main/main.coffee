@@ -24,10 +24,10 @@
     { wav: '/effect1.wav', name: 'Lazer', type: 'Effect' }
   ]
   knobs: [
-    { name: 'cut' }
-    { name: 'Q' }
-    { name: 'vol' }
-    { name: 'pan' }
+    { name: 'cut', value: 1 }
+    { name: 'Q', value: 1}
+    { name: 'vol', value: 1 }
+    { name: 'pan', value: 0 }
   ]
   # it is fired when the initial HTML document has been completely loaded and parsed.
   didLoaded: ->
