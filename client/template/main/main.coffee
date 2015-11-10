@@ -16,6 +16,12 @@
       { wav: '/hh1.wav', key: 67 }
     ]
   ]
+  draggableSamples: [
+    { wav: '/kick2.wav', name: 'Amazing Kick', type: 'Kick' }
+    { wav: '/kick3.wav', name: 'Booooom', type: 'Kick' }
+    { wav: '/snare2.wav', name: 'Massive Snare', type: 'Snare' }
+    { wav: '/effect1.wav', name: 'Lazer', type: 'Effect' }
+  ]
   didLoaded: ->
     # oncreate
     Draggable.create '.knob.front',
@@ -110,6 +116,7 @@
       clearProps: 'all'
       onStart: ->
         pad.removeClass('hit')
+  # components
   padComponent:
     controller: (data)->
       wav: data.wav
@@ -129,6 +136,17 @@
       mcom.padDown e
     ontouchend: (e)->
       mcom.padUp e
+  draggableSampleComponent:
+    controller: (data)->
+      wav: data.wav
+      name: data.name
+      type: data.type
+    view: (data)->
+      m "li.draggable.sample-item[data-drum='#{data.wav}']",
+        m "a[href='#']", "#{data.name}"
+        m ".type", "#{data.type}"
+
+  # event handlers
   onSideBarHandler:
     onclick: (e)->
       e.preventDefault()
@@ -164,18 +182,7 @@
               m "span",
                 m "i.icon.close" ,"Close"
           m "ul.sample-list",
-            m "li.draggable.sample-item[data-drum='/kick2.wav']",
-              m "a[href='#']", "Amazing Kick"
-              m ".type", "Kick"
-            m "li.draggable.sample-item[data-drum='/kick3.wav']",
-              m "a[href='#']", "Booooom"
-              m ".type", "Kick"
-            m "li.draggable.sample-item[data-drum='/snare2.wav']",
-              m "a[href='#']", "Massive Snare"
-              m ".type", "Snare"
-            m "li.draggable.sample-item[data-drum='/effect1.wav']",
-              m "a[href='#']", "Lazer"
-              m ".type", "Effect"
+            m.component mcom.draggableSampleComponent, obj for obj in mcom.draggableSamples
         m ".navbar",
           m "a[data-action='sidebar'][data-feedback='true'][href='#']", mcom.onSideBarHandler,
             m ".inner", m "i.ion-navicon"
