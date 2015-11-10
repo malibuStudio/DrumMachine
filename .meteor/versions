@@ -21,6 +21,7 @@ check@1.1.0
 chriswessels:hammer@4.0.2
 coffeescript@1.0.11
 copleykj:jquery-autosize@1.17.8
+cosmos:browserify@0.4.0
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
@@ -36,6 +37,7 @@ es5-shim@4.1.14
 fastclick@1.0.7
 flemay:less-autoprefixer@1.2.0
 geojson-utils@1.0.4
+grottolabs:mithril@0.0.1
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5
