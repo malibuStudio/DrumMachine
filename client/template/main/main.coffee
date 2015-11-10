@@ -189,7 +189,7 @@
       false
   Main:
     view: ->
-      m "[id='viewport']",
+      m "#viewport",
         m ".sidebar",
           m ".sidebar-top",
             m "a[href='#']", mcom.onSideBarCloseHandler,
@@ -200,9 +200,9 @@
         m ".navbar",
           m "a[data-action='sidebar'][data-feedback='true'][href='#']", mcom.onSideBarHandler,
             m ".inner", m "i.ion-navicon"
-        m "[id='content']",
+        m "#content",
           m ".content-body",
-            m "[id='Drummer']",
+            m "#Drummer",
               m "h1",
                 "Scribbly Pad",
                 m "small", "by Malibu Studio"
